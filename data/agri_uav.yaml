@@ -1,0 +1,16 @@
+# AgriUAV five-class detection dataset.
+# The checked-in dataset is expected at ../AgriUAV_yolo_dataset relative to this repository.
+
+path: ../AgriUAV_yolo_dataset
+train: images/train
+val: images/test
+test: images/test
+
+nc: 5
+
+names:
+  0: person
+  1: pole_tower
+  2: agricultural_machine
+  3: animal
+  4: hay_bale
