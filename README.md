@@ -84,6 +84,15 @@ names:
 
 English: The current dataset contains 6400 training images and 1600 validation/test images. Images and labels have been checked to match one-to-one.
 
+### Dataset Download / 数据集下载
+
+中文：数据集已公开分享，可通过百度网盘下载：
+
+English: The dataset is publicly available via Baidu Netdisk:
+
+- 链接 / Link: https://pan.baidu.com/s/1gW1jbu8gz3XmaQF1W_OOYw?pwd=hxw8
+- 提取码 / Code: `hxw8`
+
 ## Model / 模型
 
 中文：主模型配置文件：
