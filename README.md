@@ -245,19 +245,3 @@ English: `tests/test_agri_models.py` is a model structure test, not an mAP evalu
 ```bash
 pytest tests/test_agri_models.py
 ```
-
-## Notes / 注意事项
-
-中文：
-
-- 训练、验证、推理都应从项目根目录执行。
-- 自定义模型必须使用本项目本地 `ultralytics`，否则官方包可能找不到 `ECA` 或 `SimAM`。
-- 不建议只用 `person` 单类数据微调，否则可能遗忘其他类别。
-- 修改类别顺序时必须同步更新标签、数据 YAML、模型配置和文档。
-
-English:
-
-- Run training, validation, and inference from the project root.
-- Custom models must use the local `ultralytics` package, otherwise the official package may not find `ECA` or `SimAM`.
-- Do not fine-tune only on the `person` class, as this may cause forgetting of other classes.
-- If class order changes, update labels, dataset YAML, model configs, and documentation together.
