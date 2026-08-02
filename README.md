@@ -6,21 +6,17 @@
 
 ## Overview / 项目概述
 
-中文：本项目是一个基于 Ultralytics YOLOv8 的农业无人机目标检测工程，用于检测 UAV 视角下的五类目标：`person`、`pole_tower`、`agricultural_machine`、`animal`、`hay_bale`。当前主模型为 `YOLOv8n-P2-ECA-SimAM`，重点提升小目标检测能力。
+本项目是一个基于 Ultralytics YOLOv8 的农业无人机目标检测工程，用于检测 UAV 视角下的五类目标：`person`、`pole_tower`、`agricultural_machine`、`animal`、`hay_bale`。当前主模型为 `YOLOv8n-P2-ECA-SimAM`，重点提升小目标检测能力。
 
-English: This project is an agricultural UAV object detection system based on Ultralytics YOLOv8. It detects five classes from UAV-view images: `person`, `pole_tower`, `agricultural_machine`, `animal`, and `hay_bale`. The main model is `YOLOv8n-P2-ECA-SimAM`, designed to improve small-object detection.
+This project is an agricultural UAV object detection system based on Ultralytics YOLOv8. It detects five classes from UAV-view images: `person`, `pole_tower`, `agricultural_machine`, `animal`, and `hay_bale`. The main model is `YOLOv8n-P2-ECA-SimAM`, designed to improve small-object detection.
 
 ## Key Features / 主要特点
-
-中文：
 
 - 基于 YOLOv8n 的轻量检测模型。
 - 增加 P2/4 检测分支，适合无人机小目标。
 - 在 P2 分支加入 ECA 与 SimAM 注意力。
 - 提供训练、YOLO 格式数据集验证、图片/文件夹可视化推理脚本。
 - 默认使用本地改造版 `ultralytics`，支持自定义模块。
-
-English:
 
 - Lightweight detector based on YOLOv8n.
 - Adds a P2/4 detection branch for UAV small objects.
@@ -60,15 +56,15 @@ agriculture_UAV_Detect/
   data.yaml
 ```
 
-中文：项目命令建议在 `agriculture_UAV_Detect` 根目录执行。
+项目命令建议在 `agriculture_UAV_Detect` 根目录执行。
 
-English: Run project commands from the `agriculture_UAV_Detect` root directory.
+Run project commands from the `agriculture_UAV_Detect` root directory.
 
 ## Dataset / 数据集
 
-中文：数据集为 YOLO 检测格式。项目配置文件为 `data/agri_uav.yaml`，默认数据集路径为 `../AgriUAV_yolo_dataset`。
+数据集为 YOLO 检测格式。项目配置文件为 `data/agri_uav.yaml`，默认数据集路径为 `../AgriUAV_yolo_dataset`。
 
-English: The dataset uses YOLO detection format. The project dataset config is `data/agri_uav.yaml`, and the default dataset path is `../AgriUAV_yolo_dataset`.
+The dataset uses YOLO detection format. The project dataset config is `data/agri_uav.yaml`, and the default dataset path is `../AgriUAV_yolo_dataset`.
 
 ```yaml
 path: ../AgriUAV_yolo_dataset
@@ -84,37 +80,37 @@ names:
   4: hay_bale
 ```
 
-中文：当前数据集规模为训练集 6400 张、验证/测试集 1600 张。图片和标签已检查为一一对应。
+当前数据集规模为训练集 6400 张、验证/测试集 1600 张。图片和标签已检查为一一对应。
 
-English: The current dataset contains 6400 training images and 1600 validation/test images. Images and labels have been checked to match one-to-one.
+The current dataset contains 6400 training images and 1600 validation/test images. Images and labels have been checked to match one-to-one.
 
 ### Dataset Download / 数据集下载
 
-中文：数据集已公开分享，可通过百度网盘下载：
+数据集已公开分享，可通过百度网盘下载：
 
-English: The dataset is publicly available via Baidu Netdisk:
+The dataset is publicly available via Baidu Netdisk:
 
 - 链接 / Link: https://pan.baidu.com/s/1gW1jbu8gz3XmaQF1W_OOYw?pwd=hxw8
 - 提取码 / Code: `hxw8`
 
 ## Model / 模型
 
-中文：主模型配置文件：
+主模型配置文件：
 
-English: Main model YAML:
+Main model YAML:
 
 ```text
 ultralytics/cfg/models/v8/yolov8n-p2-eca-simam-agri.yaml
 ```
 
-中文：模型结构概要：
+模型结构概要：
 
 - Backbone 使用 YOLOv8n 风格结构。
 - Head 使用 P2/P3/P4/P5 四尺度检测。
 - P2 分支输出前经过 ECA 和 SimAM。
 - Detect 输入为 `[P2-ECA-SimAM, P3, P4, P5]`。
 
-English: Model structure summary:
+Model structure summary:
 
 - YOLOv8n-style backbone.
 - Four-scale detection head with P2/P3/P4/P5.
@@ -123,38 +119,38 @@ English: Model structure summary:
 
 ## Attention Modules / 注意力模块
 
-中文：ECA 是轻量通道注意力，通过全局平均池化和一维卷积生成通道权重，参数量极小。SimAM 是无参数的神经元级注意力，通过能量函数估计每个位置和通道的重要性。
+ECA 是轻量通道注意力，通过全局平均池化和一维卷积生成通道权重，参数量极小。SimAM 是无参数的神经元级注意力，通过能量函数估计每个位置和通道的重要性。
 
-English: ECA is a lightweight channel attention module that generates channel weights using global average pooling and a small 1D convolution. SimAM is a parameter-free neuron-wise attention module that estimates the importance of each spatial-channel response using an energy function.
+ECA is a lightweight channel attention module that generates channel weights using global average pooling and a small 1D convolution. SimAM is a parameter-free neuron-wise attention module that estimates the importance of each spatial-channel response using an energy function.
 
 ## Environment / 环境
 
-中文：推荐使用已配置的 conda 环境：
+推荐使用已配置的 conda 环境：
 
-English: Use the configured conda environment:
+Use the configured conda environment:
 
 ```bash
 conda activate yolo
 cd /home/qc004/task1/task1/agriculture_UAV_Detect
 ```
 
-中文：已验证环境包含 Python 3.9、PyTorch CUDA 和 Ultralytics 8.4.104。
+已验证环境包含 Python 3.9、PyTorch CUDA 和 Ultralytics 8.4.104。
 
-English: The environment has been verified with Python 3.9, PyTorch CUDA, and Ultralytics 8.4.104.
+The environment has been verified with Python 3.9, PyTorch CUDA, and Ultralytics 8.4.104.
 
 ## Training / 训练
 
-中文：推荐训练主模型：
+推荐训练主模型：
 
-English: Recommended command for the main model:
+Recommended command for the main model:
 
 ```bash
 bash scripts/train_agri_p2_eca_simam.sh
 ```
 
-中文：当前主脚本默认参数：
+当前主脚本默认参数：
 
-English: Current defaults in the main script:
+Current defaults in the main script:
 
 ```text
 model: ultralytics/cfg/models/v8/yolov8n-p2-eca-simam-agri.yaml
@@ -168,9 +164,9 @@ amp: False
 pretrained: False
 ```
 
-中文：如果显存不足，使用较小 batch：
+如果显存不足，使用较小 batch：
 
-English: If CUDA memory is insufficient, use a smaller batch:
+If CUDA memory is insufficient, use a smaller batch:
 
 ```bash
 bash scripts/train_agri_p2_eca_simam.sh \
@@ -180,9 +176,9 @@ bash scripts/train_agri_p2_eca_simam.sh \
 
 ## Validation on YOLO Dataset / YOLO 数据集验证
 
-中文：使用封装脚本对 YOLO 格式数据集计算 Precision、Recall、mAP：
+使用封装脚本对 YOLO 格式数据集计算 Precision、Recall、mAP：
 
-English: Use the validation wrapper to calculate Precision, Recall, and mAP on a YOLO-format dataset:
+Use the validation wrapper to calculate Precision, Recall, and mAP on a YOLO-format dataset:
 
 ```bash
 bash scripts/val_agri.sh \
@@ -194,9 +190,9 @@ bash scripts/val_agri.sh \
   --name agri_val_best
 ```
 
-中文：如需验证 `test` split：
+如需验证 `test` split：
 
-English: To validate the `test` split:
+To validate the `test` split:
 
 ```bash
 bash scripts/val_agri.sh \
@@ -206,9 +202,9 @@ bash scripts/val_agri.sh \
 
 ## Prediction and Visualization / 图片预测与可视化
 
-中文：对单张图片预测并保存可视化结果：
+对单张图片预测并保存可视化结果：
 
-English: Predict one image and save visualized results:
+Predict one image and save visualized results:
 
 ```bash
 bash scripts/predict_agri.sh /path/to/image.jpg \
@@ -218,9 +214,9 @@ bash scripts/predict_agri.sh /path/to/image.jpg \
   --name agri_predict_one
 ```
 
-中文：对文件夹批量预测：
+对文件夹批量预测：
 
-English: Predict an image folder:
+Predict an image folder:
 
 ```bash
 bash scripts/predict_agri.sh /path/to/images \
@@ -230,30 +226,30 @@ bash scripts/predict_agri.sh /path/to/images \
   --name agri_predict_dir
 ```
 
-中文：输出默认保存到 `runs/detect/<name>`。
+输出默认保存到 `runs/detect/<name>`。
 
-English: Outputs are saved to `runs/detect/<name>` by default.
+Outputs are saved to `runs/detect/<name>` by default.
 
 ## Trained Weights / 已训练权重
 
-中文：当前已训练模型权重：
+当前已训练模型权重：
 
-English: Current trained weights:
+Current trained weights:
 
 ```text
 runs/detect/agri_p2_eca_simam/weights/best.pt
 runs/detect/agri_p2_eca_simam/weights/last.pt
 ```
 
-中文：训练结果显示除 `person` 外，其他类别效果较理想。`person` 类召回偏低，后续建议补充更多 UAV 视角下的人类小目标样本，并用 `best.pt` 进行低学习率微调。
+训练结果显示除 `person` 外，其他类别效果较理想。`person` 类召回偏低，后续建议补充更多 UAV 视角下的人类小目标样本，并用 `best.pt` 进行低学习率微调。
 
-English: Training results show that all classes except `person` perform well. The `person` class has low recall. Future work should add more UAV-view small-person samples and fine-tune from `best.pt` with a lower learning rate.
+Training results show that all classes except `person` perform well. The `person` class has low recall. Future work should add more UAV-view small-person samples and fine-tune from `best.pt` with a lower learning rate.
 
 ## Tests / 结构测试
 
-中文：`tests/test_agri_models.py` 是模型结构测试，不是 mAP 验证脚本。它检查 ECA/SimAM、P2/P3/P4/P5 输出尺度、检测头类别数、参数量和 GFLOPs。
+`tests/test_agri_models.py` 是模型结构测试，不是 mAP 验证脚本。它检查 ECA/SimAM、P2/P3/P4/P5 输出尺度、检测头类别数、参数量和 GFLOPs。
 
-English: `tests/test_agri_models.py` is a model structure test, not an mAP evaluation script. It checks ECA/SimAM, P2/P3/P4/P5 output strides, detection class count, parameter count, and GFLOPs.
+`tests/test_agri_models.py` is a model structure test, not an mAP evaluation script. It checks ECA/SimAM, P2/P3/P4/P5 output strides, detection class count, parameter count, and GFLOPs.
 
 ```bash
 pytest tests/test_agri_models.py
