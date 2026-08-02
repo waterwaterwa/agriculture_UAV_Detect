@@ -200,6 +200,10 @@ calibration_*.npy
 *.ico
 *.raw
 
+# Allow project showcase image in assets
+!assets/
+!assets/5.jpg
+
 # Training logs
 args.yaml
 results.csv

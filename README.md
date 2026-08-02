@@ -1,5 +1,9 @@
 # AgriUAV YOLOv8 Detection / AgriUAV YOLOv8 农业无人机目标检测
 
+<p align="center">
+  <img src="assets/5.jpg" alt="AgriUAV Detection Showcase" width="800">
+</p>
+
 ## Overview / 项目概述
 
 中文：本项目是一个基于 Ultralytics YOLOv8 的农业无人机目标检测工程，用于检测 UAV 视角下的五类目标：`person`、`pole_tower`、`agricultural_machine`、`animal`、`hay_bale`。当前主模型为 `YOLOv8n-P2-ECA-SimAM`，重点提升小目标检测能力。
